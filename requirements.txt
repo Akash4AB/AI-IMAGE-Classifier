@@ -4,3 +4,4 @@ matplotlib
 keras
 streamlit
 opencv-python-headless
+tensorflow
