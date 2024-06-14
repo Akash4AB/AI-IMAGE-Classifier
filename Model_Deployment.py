@@ -1,6 +1,6 @@
 import numpy as np
 import streamlit as st
-import cv2
+import opencv-python
 from PIL import Image
 import matplotlib.pyplot as plt
 from keras.models import load_model
