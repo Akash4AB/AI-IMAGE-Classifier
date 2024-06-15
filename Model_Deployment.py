@@ -29,6 +29,8 @@ page_bg_css = r"""
 # Loading the Model
 model = load_model('model3.h5')
 
+model.save('model4.h5')
+
 def Prediction(image):
     image = Image.open(image)
     img = np.array(image)  # Converting image to numpy array
