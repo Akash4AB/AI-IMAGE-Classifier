@@ -5,8 +5,6 @@ from PIL import Image
 import matplotlib.pyplot as plt
 from keras.models import load_model
 
-
-
 page_bg_css = r"""
 <style>
     .stApp {
@@ -24,13 +22,11 @@ page_bg_css = r"""
 </style>
 """
 
-
-
 # Loading the Model
 model = load_model('model.h5')
 
 def Prediction(image):
-    image = Image.open(image)
+    image = Image.open(image).convert('RGB')  # Convert image to RGB format
     img = np.array(image)  # Converting image to numpy array
 
     test_img = cv2.resize(img, (64, 64))  # Resize image to match the model input
@@ -43,9 +39,6 @@ def Prediction(image):
         return "Real Image", prob
     else:
         return "AI Generated Image", 1 - prob
-    
-
-
 
 # Main function for the Streamlit app
 def main():
@@ -55,7 +48,7 @@ def main():
     st.title('AI-IMAGE-CLASSIFIER')
 
     # Image uploading for input
-    img_file = st.file_uploader("Upload a Image to determine if it is AI generated or REAL", type=["jpg", "jpeg", "png"])
+    img_file = st.file_uploader("Upload an Image to determine if it is AI generated or REAL", type=["jpg", "jpeg", "png"])
 
     result = ''
     prob = None
@@ -79,12 +72,14 @@ def main():
     if result and prob is not None:
         color = "yellow"
         col1, col2 = st.columns(2)
-        # col1.metric(label="Type", value=result)
-        # col2.metric(label="Probability", value=prob)
         with col1:
             st.markdown(f'<h3 style="color: {color};">Type: {result}</h3>', unsafe_allow_html=True)
         with col2:
             st.markdown(f'<h3 style="color: yellow;">Probability: {prob}</h3>', unsafe_allow_html=True)
+
+if __name__ == '__main__':
+    main()
+
 
 
 
