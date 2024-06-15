@@ -27,7 +27,7 @@ page_bg_css = r"""
 
 
 # Loading the Model
-model = load_model('E:\Project\model4.h5')
+model = load_model('model3.h5')
 
 def Prediction(image):
     image = Image.open(image)
