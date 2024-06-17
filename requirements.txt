@@ -3,5 +3,5 @@ Pillow
 matplotlib
 keras
 streamlit
-opencv-python-headless
+opencv-python
 tensorflow
